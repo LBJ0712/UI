@@ -17,7 +17,7 @@ before_script:
 
 # 无其他依赖项所以执行npm run build 构建就行了
 script:
-  - npm run build
+  - npm run build:travis
 
 after_script:
   - cd ./dist
@@ -37,3 +37,6 @@ env:
  global:
    # 我将其添加到了travis-ci的环境变量中
    #- GH_REF: github.com/yimogit/metools.git 
+after_success:
+  - ./qshell qupload qiniu-config
+  - ./qshell cdnrefresh -dirs cdnrefresh-dirs.txt
