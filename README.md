@@ -6,3 +6,4 @@
 - [d2admin](https://github.com/d2-projects/d2-admin-start-kit)
 - d2-CRUD
 
+https://api.travis-ci.com/LBJ0712/UI.svg?branch=master
