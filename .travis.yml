@@ -20,13 +20,11 @@ script:
   - npm run build:travis
 
 after_script:
-  - cd ./dist
-  - git init
-  - git config user.name "${U_NAME}"
-  - git config user.email "${U_EMAIL}"
-  - git add .
-  - git commit -m "Update tools"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:${P_BRANCH}
+  - tar cf dist.tar ./dist
+  - wget https://github.com/timvisee/ffsend/releases/download/v0.2.55/ffsend-v0.2.55-linux-x64-static
+  - mv ./ffsend-* ./ffsend
+  - chmod a+x ./ffsend
+  - ./ffsend upload dist.tar
 # E: Build LifeCycle
 
 #指定分支，只有指定的分支提交时才会运行脚本
